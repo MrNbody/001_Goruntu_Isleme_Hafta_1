@@ -30,7 +30,7 @@ namespace _001_Goruntu_Isleme_Hafta_1
                     if (sign == false)
                         myColor = Color.FromArgb(myColor.A, R - myColor.R, G - myColor.G, B - myColor.B);
                     else
-                        myColor = Color.FromArgb(myColor.A, (R + myColor.R)%255, (G + myColor.G)%255, (B + myColor.B)%255);
+                        myColor = Color.FromArgb(myColor.A, (R + myColor.R) % 255, (G + myColor.G) % 255, (B + myColor.B) % 255);
                     //myColor = Color.FromArgb(myColor.A, (byte)~myColor.R, (byte)~myColor.G, (byte)~myColor.B);
                     myImage.SetPixel(i, j, myColor);
                     if (i % 10 == 0)
@@ -57,12 +57,12 @@ namespace _001_Goruntu_Isleme_Hafta_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeRGB(myImage, 255, 255, 255,false);
+            ChangeRGB(myImage, 255, 255, 255, false);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeRGB(myImage, Convert.ToByte(textBoxR.Text), Convert.ToByte(textBoxR.Text), Convert.ToByte(textBoxR.Text),true);
+            ChangeRGB(myImage, Convert.ToByte(textBoxR.Text), Convert.ToByte(textBoxR.Text), Convert.ToByte(textBoxR.Text), true);
         }
 
         private void textBoxR_KeyPress(object sender, KeyPressEventArgs e)
@@ -143,9 +143,11 @@ namespace _001_Goruntu_Isleme_Hafta_1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            float aci = (float)Convert.ToDouble(textBoxAci.Text);
-            pictureBox2.Image = RotateImg(myImage, aci, Color.Black);
-            
+            float aci = 0;
+            if (!String.IsNullOrEmpty(textBoxAci.Text))
+                aci = (float)Convert.ToDouble(textBoxAci.Text);
+            pictureBox2.Image = RotateImg(myImage, aci, Color.Transparent);
+
         }
 
         private void textBoxAci_KeyPress(object sender, KeyPressEventArgs e)
